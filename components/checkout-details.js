@@ -13,25 +13,38 @@ function CheckoutDetails() {
     redirectToCheckout,
   } = useShoppingCart();
 
+  const form = document.querySelector('form');
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const response = await fetch('/api/redirect-to-checkout', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(cartDetails),
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .catch((error) => console.log(error));
+    console.log('event', event.target);
+
+    let formData = new FormData(event.target);
+
+    formData.append('username', 'Chris');
+
+    console.log('form data', formData);
+    form.submit();
+
+    // const response = await fetch('/api/redirect-to-checkout', {
+    //   method: 'post',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify(cartDetails),
+    // })
+    //   .then((res) => {
+    //     return res.json();
+    //   })
+    //   .catch((error) => console.log(error));
   };
 
   return (
-    <Box as='form'>
-      <Box sx={{ marginBottom: '24px' }} as='table'>
+    <form action='/api/redirect-to-checkout' method='POST'>
+      <input type='hidden' name='test' value='derp' />
+      <button type='submit'>Submit</button>
+      {/* <Box sx={{ marginBottom: '24px' }} as='table'>
         <caption className={`visually-hidden`}>Shopping Cart</caption>
         <thead>
           <Box as='tr'>
@@ -90,9 +103,9 @@ function CheckoutDetails() {
           }}>
           Close
         </Button>
-        <Button onClick={handleSubmit}>Checkout</Button>
-      </Flex>
-    </Box>
+        <Button type='submit'>Checkout</Button>
+      </Flex> */}
+    </form>
   );
 }
 
