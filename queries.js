@@ -33,7 +33,6 @@ export const queryDocsByType = async (type) => {
 };
 
 export const queryDocByUID = async (uid) => {
-  console.log('yerrrr', uid);
   try {
     const result = await Client().getByUID('product', uid);
     return result;

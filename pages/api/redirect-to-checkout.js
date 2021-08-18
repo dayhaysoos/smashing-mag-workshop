@@ -2,34 +2,44 @@ const stripe = require('stripe')(process.env.STRIPE_API_SECRET);
 const validateCartItems =
   require('use-shopping-cart/utilities').validateCartItems;
 
+const fetch = require('node-fetch');
+
 // instead of returning a session ID to the client side for redirectToCheckout,
 // we can redirect serverside with the created sessions url (session.url)
 
-exports.handler = async (event) => {
+// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+
+export default async (req, res) => {
   let product;
+
+  let inventory;
+
   try {
-    product = JSON.parse(event.body);
+    const result = await fetch(
+      'https://condescending-chandrasekhar-9f61bb.netlify.app/.netlify/functions/next_api_get_products'
+    );
+
+    inventory = await result.json();
+
+    inventory = inventory.results.map((item) => item.blob);
   } catch (error) {
-    return {
-      statusCode: 400,
-      body: JSON.stringify({
-        message: 'Received malformed JSON.',
-        error: error.message,
-      }),
-    };
+    console.log('Error: ', error);
+  }
+
+  try {
+    product = validateCartItems(inventory, req.body);
+  } catch (error) {
+    res.status(400);
   }
 
   let line_items;
   try {
     line_items = product;
   } catch (error) {
-    return {
-      statusCode: 422,
-      body: JSON.stringify({
-        message: 'Some of the items in your cart are invalid.',
-        error: error.message,
-      }),
-    };
+    res.status(422).json({
+      message: 'Some of the items in  your cart are invalid',
+      error: error.message,
+    });
   }
 
   let session;
@@ -41,25 +51,15 @@ exports.handler = async (event) => {
         allowed_countries: ['US', 'CA'],
       },
       mode: 'payment',
-      success_url: `${process.env.URL}/success.html`,
-      cancel_url: process.env.URL,
+      success_url: `${process.env.SITE_URL}/success`,
+      cancel_url: process.env.SITE_URL,
       line_items,
     });
   } catch (error) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({
-        message: 'While communicating with Stripe, we encountered an error.',
-        error: error.message,
-      }),
-    };
+    res.status(500).json({
+      message: 'While communicating with Stripe, we encountered an error.',
+      error: error.message,
+    });
   }
-
-  return {
-    statusCode: 302,
-    headers: {
-      Location: session.url,
-    },
-    body: '',
-  };
+  res.writeHead(302, { Location: session.url }).end();
 };
