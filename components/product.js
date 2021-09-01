@@ -21,8 +21,6 @@ function Product({ product }) {
 
   const { addItem } = useShoppingCart();
 
-  console.log(product.data);
-
   return (
     <Container>
       <Flex

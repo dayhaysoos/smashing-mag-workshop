@@ -13,8 +13,6 @@ const Header = () => {
   const { user, identity: netlifyIdentity } = useContext(IdentityContext);
   const { cartCount, handleCartClick } = useShoppingCart();
 
-  console.log('lol', useContext(IdentityContext));
-
   return (
     <Box
       as='header'

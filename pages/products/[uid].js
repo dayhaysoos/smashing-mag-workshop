@@ -32,8 +32,6 @@ export async function getStaticProps({ params }) {
     fetchLinks: ['product.id', 'product.brand'],
   });
 
-  console.log('lawg', product);
-
   return {
     props: {
       product,
