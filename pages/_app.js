@@ -8,7 +8,6 @@ function MyApp({ Component, pageProps }) {
   return (
     <Provider>
       <ThemeProvider theme={theme}>
-        1
         <CartProvider
           mode='payment'
           cartMode='checkout-session'
