@@ -1,12 +1,25 @@
 import React from 'react';
-import { RichText } from 'prismic-reactjs';
-import { Link } from 'prismic-reactjs';
+import { Box } from 'theme-ui';
+import Container from '../../components/container';
 
-const MarketingCopy = ({}) => {
+const MarketingCopy = ({ slice }) => {
   return (
-    <>
-      <h1>This is marketing copy stuff</h1>
-    </>
+    <Container>
+      <Box
+        sx={{
+          borderTop: '5px solid black',
+          borderBottom: '5px solid black',
+          paddingTop: '40px',
+          paddingBottom: '40px',
+        }}>
+        <Box as='p' sx={{ fontWeight: 'bold', marginBottom: '16px' }}>
+          {slice.primary.blurb}
+        </Box>
+        <Box sx={{ fontSize: ['18px', '48px'] }} as='p'>
+          {slice.primary.copy}
+        </Box>
+      </Box>
+    </Container>
   );
 };
 

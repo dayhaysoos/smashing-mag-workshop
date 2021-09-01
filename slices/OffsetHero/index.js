@@ -1,21 +1,19 @@
 import React from 'react';
 import { Box, Flex, Image, Heading } from 'theme-ui';
-import { RichText } from 'prismic-reactjs';
-import { Link } from 'prismic-reactjs';
+import Container from '../../components/container';
 
 function OffsetHero({ slice }) {
   return (
-    <>
-      <Flex>
-        <Heading>{}</Heading>
-        <Box>
-          <Image src={slice.primary.image_1.url} />
+    <Container>
+      <Flex sx={{ justifyContent: 'space-between', marginBottom: '150px' }}>
+        <Box sx={{ position: 'relative' }}>
+          <Image sx={{ width: '95%' }} src={slice.primary.image_1.url} />
         </Box>
-        <Box>
-          <Image src={slice.primary.image_2.url} />
+        <Box sx={{ position: 'relative', top: '80px' }}>
+          <Image sx={{ width: '95%' }} src={slice.primary.image_2.url} />
         </Box>
       </Flex>
-    </>
+    </Container>
   );
 }
 

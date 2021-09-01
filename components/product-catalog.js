@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Box, Heading, Image, Paragraph, Flex } from 'theme-ui';
 import Link from 'next/link';
 import { RichText } from 'prismic-reactjs';
-import { htmlSerializer } from '../prismic';
+import { htmlSerializer } from '../prismic-config';
 
 function ProductCatalog({ products }) {
   return (

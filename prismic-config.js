@@ -9,6 +9,16 @@ export const htmlSerializer = function (type, element, content, children, key) {
   let props = {};
 
   switch (type) {
+    case Elements.list:
+      return (
+        <Box
+          key={key}
+          as='ul'
+          sx={{ paddingLeft: '18px' }}
+          {...props}
+          children={children}
+        />
+      );
     case Elements.listItem:
       return (
         <Box
@@ -26,7 +36,7 @@ export const htmlSerializer = function (type, element, content, children, key) {
   }
 };
 
-export const apiEndpoint = 'https://workshop-june2021.cdn.prismic.io/api/v2';
+export const apiEndpoint = 'https://smashing-mag-workshop.prismic.io/api/v2';
 
 // -- Access Token if the repository is not public
 // Generate a token in your dashboard and configure it here if your repository is private
@@ -59,7 +69,7 @@ export const customLink = (type, element, content, children, index) => (
 );
 
 export const Router = {
-  routes: [{ type: 'page', path: '/:uid' }],
+  routes: [],
 
   href: (type) => {
     const route = Router.routes.find((r) => r.type === type);

@@ -2,11 +2,13 @@ import React from 'react';
 import { RichText } from 'prismic-reactjs';
 import { Flex, Box } from 'theme-ui';
 import { formatCurrencyString } from 'use-shopping-cart';
+import Container from '../../components/container';
 
 const SelectionSlice = ({ slice }) => {
   return (
-    <section>
-      <RichText render={slice.primary.title} />
+    <Container>
+      <RichText render={slice.primary.selection_header} />
+      <RichText render={slice.primary.selection_copy} />
       <Flex>
         {slice?.items?.map((item, i) => {
           return (
@@ -14,19 +16,17 @@ const SelectionSlice = ({ slice }) => {
               <Box sx={{ padding: '2px' }}>
                 <img
                   width='100%'
-                  src={item.selected_product.image}
-                  alt={item.selected_product.title}
+                  src={item.selection_products.image}
+                  alt={item.selection_products.title}
                   key={`img-${i}`}
-                  style={{ marginBottom: '16px' }}
+                  style={{ marginBottom: '4px' }}
                 />
               </Box>
               <Box>
-                <p>
-                  <strong>{item.selected_product.title}</strong>
-                </p>
-                <p key={`item.price-${i}`}>
+                <strong>{item.selection_products.title}</strong>
+                <p style={{ marginTop: '4px' }} key={`item.price-${i}`}>
                   {formatCurrencyString({
-                    value: item.selected_product.price,
+                    value: item.selection_products.price,
                     currency: 'USD',
                   })}
                 </p>
@@ -35,7 +35,7 @@ const SelectionSlice = ({ slice }) => {
           );
         })}
       </Flex>
-    </section>
+    </Container>
   );
 };
 

@@ -35,8 +35,8 @@ export default {
   styles: {
     li: {
       color: 'text',
-      marginBottom: '8px',
-      marginTop: '8px',
+      marginBottom: '24px',
+      marginTop: '24px',
     },
     h2: {
       fontSize: '32px',
@@ -62,6 +62,8 @@ export default {
     },
     header: {
       color: 'secondary',
+      backgroundColor: 'background',
+      border: '1px solid black',
     },
     select: {
       border: '1px solid dotted',
@@ -82,10 +84,11 @@ export default {
   },
   links: {
     nav: {
-      color: 'text',
       transition: '0.5s all ease',
       '&:hover, &:focus': {
         transform: 'scale(1.1)',
+        color: 'text',
+        textDecoration: 'underline',
       },
     },
   },

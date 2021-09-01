@@ -1,8 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
 import Product from '../../components/product';
-
-import { queryDocsByType, queryDocByUID } from '../../queries';
+import Prismic from '@prismicio/client';
+import { Client } from '../../prismic-config';
 
 import Layout from '../../components/layout';
 
@@ -15,7 +15,9 @@ const ProductPage = ({ product }) => {
 };
 
 export async function getStaticPaths() {
-  const allProducts = await queryDocsByType('product');
+  const allProducts = await Client().query(
+    Prismic.Predicates.at('document.type', 'product')
+  );
 
   return {
     paths: allProducts.results.map((prod) => {
@@ -26,7 +28,11 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const product = await queryDocByUID(params.uid);
+  const product = await Client().getByUID('product', params.uid, {
+    fetchLinks: ['product.id', 'product.brand'],
+  });
+
+  console.log('lawg', product);
 
   return {
     props: {

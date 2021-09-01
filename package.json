@@ -22,6 +22,6 @@
     "react-icons": "^4.2.0",
     "stripe": "^8.169.0",
     "theme-ui": "^0.10.0",
-    "use-shopping-cart": "^3.0.0"
+    "use-shopping-cart": "^3.0.3"
   }
 }

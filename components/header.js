@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { NavLink, Flex, Box, Button } from 'theme-ui';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import ShoppingCartIcon from './shopping-cart-icon';
 import { IdentityContext } from '../context/identity-context';
 import { useShoppingCart } from 'use-shopping-cart';
 
@@ -14,12 +13,13 @@ const Header = () => {
   const { user, identity: netlifyIdentity } = useContext(IdentityContext);
   const { cartCount, handleCartClick } = useShoppingCart();
 
+  console.log('lol', useContext(IdentityContext));
+
   return (
     <Box
       as='header'
       sx={{
-        backgroundColor: `primary`,
-        marginBottom: `1.45rem`,
+        backgroundColor: `background`,
       }}>
       <Flex
         as='nav'
@@ -28,6 +28,7 @@ const Header = () => {
           maxWidth: 960,
           padding: `1.45rem 1.0875rem`,
           justifyContent: 'space-evenly',
+          alignItems: 'center',
         }}>
         <Link href={'/'}>
           <NavLink as={'a'}>Home</NavLink>
@@ -45,7 +46,10 @@ const Header = () => {
         <Link href={'/contact'}>
           <NavLink as={'a'}>Contact</NavLink>
         </Link>
-        <Button onClick={() => handleCartClick()} variant='header'>
+        <Button
+          variant='header'
+          onClick={() => handleCartClick()}
+          variant='header'>
           Cart({cartCount})
         </Button>
         {!user ? (

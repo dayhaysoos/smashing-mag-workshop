@@ -1,14 +1,14 @@
 import React from 'react';
 import Layout from '../../components/layout';
-import Head from 'next/head';
-import { RichText } from 'prismic-reactjs';
 import ProductCatalog from '../../components/product-catalog';
-
-import { queryRepeatableDocuments, queryDocsByType } from '../../queries';
+import Prismic from '@prismicio/client';
+import { Client } from '../../prismic-config';
 import { Heading } from '@theme-ui/components';
 
 export async function getStaticProps() {
-  const allProducts = await queryDocsByType('product');
+  const allProducts = await Client().query(
+    Prismic.Predicates.at('document.type', 'product')
+  );
 
   return {
     props: {
@@ -18,7 +18,6 @@ export async function getStaticProps() {
 }
 
 function Products({ products }) {
-  console.log('products', products);
   return (
     <Layout>
       <Heading as='h1' sx={{ textAlign: 'center' }}>

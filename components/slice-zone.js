@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { MarketingCopy, OffsetHero, SelectionSlice, Title } from '../slices';
+import {
+  MarketingCopy,
+  OffsetHero,
+  SelectionSlice,
+  Title,
+  About,
+} from '../slices';
 
 export const SliceZone = ({ slices }) => {
   const sliceComponents = {
@@ -7,7 +13,7 @@ export const SliceZone = ({ slices }) => {
     offset_hero: OffsetHero,
     marketing_copy: MarketingCopy,
     selection_products: SelectionSlice,
-    // about: () => `About`,
+    about: About,
   };
 
   return slices.map((slice, index) => {
