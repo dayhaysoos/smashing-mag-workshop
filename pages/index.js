@@ -28,10 +28,10 @@ export default function Home(props) {
           <Heading
             as='h1'
             sx={{
-              fontSize: ['4em', '10em'],
+              fontSize: ['4em', '8em', '10em'],
               position: 'relative',
               top: ['0', '100px'],
-              right: ['0', '100px'],
+              right: ['0', '4%', '8%'],
             }}>
             Rainbow{' '}
             <Box
