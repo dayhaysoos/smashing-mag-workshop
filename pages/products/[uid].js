@@ -29,7 +29,20 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const product = await Client().getByUID('product', params.uid, {
-    fetchLinks: ['product.id', 'product.brand'],
+    graphQuery: `
+      {
+        product {
+          ...productFields
+          related_products {
+            related_product {
+              ...on product {
+                ...productFields
+              }
+            }
+          }
+        }
+      }
+    `,
   });
 
   return {
