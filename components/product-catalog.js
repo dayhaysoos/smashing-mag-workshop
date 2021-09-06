@@ -14,14 +14,13 @@ function ProductCatalog({ products }) {
           <Flex
             key={uid}
             sx={{
-              padding: '8px',
+              padding: '16px',
               flexDirection: 'column',
               justifyContent: 'center',
               alignItems: 'center',
-              border: '1px solid #edf0f5',
               transition: 'all 0.3s ease-in',
               '&:hover': {
-                borderColor: 'black',
+                transform: 'scale(1.1)',
               },
             }}>
             <Link href={`/products/${uid}`}>

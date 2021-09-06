@@ -3,7 +3,6 @@ import Head from 'next/head';
 import Product from '../../components/product';
 import Prismic from '@prismicio/client';
 import { Client } from '../../prismic-config';
-
 import Layout from '../../components/layout';
 
 const ProductPage = ({ product }) => {

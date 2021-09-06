@@ -1,4 +1,5 @@
-import { Client, linkResolver } from '../../prismic-config';
+import { linkResolver } from '../../prismic-config';
+import { Client } from 'utils/prismicHelpers';
 
 export default async (req, res) => {
   const { token: ref, documentId } = req.query;
@@ -12,6 +13,9 @@ export default async (req, res) => {
 
   res.setPreviewData({ ref });
 
+  // Redirect the user to the share endpoint from same origin. This is
+  // necessary due to a Chrome bug:
+  // https://bugs.chromium.org/p/chromium/issues/detail?id=696204
   res.write(
     `<!DOCTYPE html><html><head><meta http-equiv="Refresh" content="0; url=${redirectUrl}" />
     <script>window.location.href = '${redirectUrl}'</script>

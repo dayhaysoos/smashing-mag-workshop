@@ -5,13 +5,8 @@ import { Box, Flex, Image, Button, Close } from 'theme-ui';
 import Select from './select';
 
 function CheckoutDetails() {
-  const {
-    cartDetails,
-    formattedTotalPrice,
-    handleCartClick,
-    removeItem,
-    redirectToCheckout,
-  } = useShoppingCart();
+  const { cartDetails, formattedTotalPrice, handleCartClick, removeItem } =
+    useShoppingCart();
 
   const form = document.querySelector('form');
 
@@ -30,15 +25,12 @@ function CheckoutDetails() {
         name='cartDetails'
         value={JSON.stringify(cartDetails)}
       />
-      <Box sx={{ marginBottom: '24px' }} as='table'>
+      <Box sx={{ marginBottom: '24px', width: '100%' }} as='table'>
         <caption className={`visually-hidden`}>Shopping Cart</caption>
         <thead>
           <Box as='tr'>
             <Box as='th' scope='col'>
               Name
-            </Box>
-            <Box as='th' scope='col'>
-              Description
             </Box>
             <Box as='th' scope='col'>
               Total
@@ -48,7 +40,7 @@ function CheckoutDetails() {
             </Box>
           </Box>
         </thead>
-        <tbody>
+        <tbody style={{ textAlign: 'center' }}>
           {Object.keys(cartDetails).map((cartItem) => {
             const item = cartDetails[cartItem];
             return (
@@ -56,7 +48,6 @@ function CheckoutDetails() {
                 <Box as='td' scope='row'>
                   {item.name}
                 </Box>
-                <Box as='td'>{item.description}</Box>
                 <Box as='td'>{item.formattedValue}</Box>
                 <Box as='td'>
                   <label>
