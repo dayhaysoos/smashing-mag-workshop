@@ -1,34 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# How to Build Content-Rich eCommerce Sites with Next.js and the Jamstack
 
-## Getting Started
+## Welcome
 
-First, run the development server:
+The Jamstack can be an excellent way to power eCommerce sites. In this free workshop from our friends at Netlify, Nick DeJesus will walk you through how to create fast, reliable, and content-rich Jamstack sites using Next.js, Netlify, Stripe, and Prismic.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+This workshop assume you've got a developer environment set up with Node js and can install packages with npm
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Setting up
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+You're going to need accounts for the following platforms:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Netlify for hosting and dev environment
+[https://www.netlify.com/](https://www.netlify.com/)
+Prismic for CMS
+[https://www.prismic.io/](https://prismic.io)
+Stripe for payment processing (if you don't have a Stripe account I can make some private keys from my test accounts)
+[https://www.stripe.com/](https://stripe.com)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+You're also going to need to install the Netlify CLI:
 
-## Learn More
+`npm install -g netlify-cli`
 
-To learn more about Next.js, take a look at the following resources:
+As well as the Prismic CLI so you can clone this workshop:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`npm install -g prismic-cli`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+To clone the repo, run the following command:
 
-## Deploy on Vercel
+`prismic theme --theme-url https://github.com/dayhaysoos/smashing-mag-workshop --conf prismic-config.js`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+(This should give them the prismic repo with Custom Types already set up, need to figure out how to set them up with docs properly)
