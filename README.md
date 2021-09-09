@@ -10,11 +10,16 @@ This workshop assume you've got a developer environment set up with Node js and 
 
 You're going to need accounts for the following platforms:
 
-Netlify for hosting and dev environment
+### Netlify for hosting and dev environment
+
 [https://www.netlify.com/](https://www.netlify.com/)
-Prismic for CMS
+
+### Prismic for CMS
+
 [https://www.prismic.io/](https://prismic.io)
-Stripe for payment processing (if you don't have a Stripe account I can make some private keys from my test accounts)
+
+### Stripe for payment processing (if you don't have a Stripe account I can make some private keys from my test accounts)
+
 [https://www.stripe.com/](https://stripe.com)
 
 You're also going to need to install the Netlify CLI:
