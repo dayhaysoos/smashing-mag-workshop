@@ -18,7 +18,7 @@ You're going to need accounts for the following platforms:
 
 [https://www.prismic.io/](https://prismic.io)
 
-### Stripe for payment processing (if you don't have a Stripe account I can make some private keys from my test accounts)
+### Stripe for payment processing
 
 [https://www.stripe.com/](https://stripe.com)
 
