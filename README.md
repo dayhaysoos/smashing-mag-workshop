@@ -34,4 +34,6 @@ To clone the repo, run the following command:
 
 `prismic theme --theme-url https://github.com/dayhaysoos/smashing-mag-workshop --conf prismic-config.js`
 
+You'll be prompted to give a name to the project, you can call it `smashing-mag-workshop`
+
 (This should give them the prismic repo with Custom Types already set up, need to figure out how to set them up with docs properly)
