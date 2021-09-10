@@ -5,14 +5,14 @@ export default {
     primary: '#fff',
     secondary: '#000',
     secondaryText: '#fff',
-    modes: {
-      dark: {
-        text: '#fff',
-        background: '#000',
-        primary: '#000',
-        secondary: '#fff',
-      },
-    },
+    // modes: {
+    //   dark: {
+    //     text: '#fff',
+    //     background: '#000',
+    //     primary: '#000',
+    //     secondary: '#fff',
+    //   },
+    // },
   },
   fonts: {
     body: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
